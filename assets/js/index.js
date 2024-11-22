@@ -20,170 +20,206 @@ gsap.set('.sc-header .group-images .img-roll', { scale: 1.3, opacity: 0.4 });
 gsap.set('.sc-header .container.roll .letter', { yPercent: 120, opacity: 0 });
 gsap.set('.sc-header .desc', { y: 40 });
 
-rollImgs.forEach((img) => {
-  if (img.complete) {
-    loadedCount++;
-  } else {
-    img.addEventListener('load', () => {
-      loadedCount++;
-      if (loadedCount === rollImgs.length) {
-        imgLoaded();
+function imagesLoaded() {
+  const promises = Array.from(rollImgs).map((img) => {
+    return new Promise((resolve) => {
+      if (img.complete) {
+        resolve();
+      } else {
+        img.addEventListener('load', resolve);
+        img.addEventListener('error', resolve);
       }
     });
-  }
-});
+  });
 
-if (loadedCount === rollImgs.length) {
-  imgLoaded();
+  return Promise.all(promises);
 }
 
-function imgLoaded() {
-  animatedLogo.addEventListener('animationend', () => {
-    const headerTl = gsap.timeline();
-
-    headerTl
-      .set(
-        '.sc-header .group-images',
-        {
-          animationPlayState: 'running',
-        },
-        'l+=.25'
-      )
-
-      .to(
-        '.sc-header .group-logo .logo .logo-full',
-        0,
-        { opacity: 0, ease: 'none' },
-        'm'
-      )
-      .to(
-        '.sc-header .group-images .mask-bg',
-        0,
-        { opacity: 1, ease: 'none' },
-        'm'
-      )
-
-      .to(
-        '.sc-header .group-images .img-roll .filter',
-        0,
-        { opacity: 1 },
-        'n+=.5'
-      )
-      .to(
-        '.sc-header .group-images .img-roll',
-        { duration: 2, opacity: 1 },
-        'n+=.5'
-      )
-      .to(
-        '.sc-header .group-images .img-roll',
-        { duration: 2.5, scale: 1 },
-        'n+=.5'
-      )
-      .to(
-        '.sc-header .container.roll .letter',
-        {
-          yPercent: 0,
-          opacity: 1,
-          stagger: {
-            each: 0.1,
-          },
-        },
-        'n+=.5'
-      )
-
-      .to(
-        '.sc-header .group-images .img-roll img:first-child',
-        {
-          duration: 0.5,
-          visibility: 'visible',
-          onComplete: () => {
-            gsap.set('.sc-header .group-images .img-roll img:first-child', {
-              visibility: 'hidden',
-            });
-          },
-        },
-        'n+=.5'
-      )
-
-      .to(
-        '.sc-header .group-images .img-roll img:not(:first-child)',
-        {
-          visibility: 'visible',
-          stagger: {
-            each: 0.1,
-            onComplete: () => {
-              gsap.set(
-                '.sc-header .group-images .img-roll img:not(:first-child)',
-                {
-                  visibility: 'hidden',
-                }
-              );
-            },
-          },
-        },
-        'n+=1'
-      )
-
-      .to(
-        '.sc-header .bg',
-        {
-          opacity: 1,
-        },
-        'n+=1'
-      )
-
-      .to(
-        '.sc-header .group-images .img',
-        {
-          visibility: 'visible',
-        },
-        'o-=.3'
-      )
-
-      .to('.sc-header .group-images', { height: '80%' }, 'p')
-      .to('.sc-header .container.roll .letter', 1, { opacity: 0 }, 'p+=.2')
-      .to('.sc-header .container', 1, { opacity: 1 }, 'p+=.2')
-      .to('.sc-header .desc', 1, { y: 0 }, 'p+=.2')
-      .to('.sc-header .desc', 1, { y: 0 }, 'p+=.2')
-      .to('.header .logo', { visibility: 'visible' }, 'p+=.2')
-      .to(
-        '.header .ani a svg .logo-top',
-        {
-          duration: 1.25,
-          animationPlayState: 'running',
-        },
-        'p+=.4'
-      )
-      .to(
-        '.header .ani a svg .logo-bottom',
-        {
-          duration: 1.25,
-          animationPlayState: 'running',
-          onComplete: function () {
-            $('.header .logo').removeClass('ani');
-
-            $('.header .logo').hover(function () {
-              $('.header .logo').addClass('draw');
-            });
-
-            $('.header .logo').on('animationend', function () {
-              $(this).removeClass('draw');
-            });
-          },
-        },
-        'p+=.4'
-      )
-      .to(
-        '.header .btn-area .btn-shop',
-        { animationPlayState: 'running' },
-        'p+=.4'
-      )
-      .to(
-        '.header .btn-area .btn-contact',
-        { animationPlayState: 'running' },
-        'p+=.4'
-      );
+function logoAnimationEnded() {
+  return new Promise((resolve) => {
+    if (animatedLogo) {
+      const checkAnimation = () => {
+        animatedLogo.removeEventListener('animationend', checkAnimation);
+        resolve();
+      };
+      animatedLogo.addEventListener('animationend', checkAnimation);
+    } else {
+      resolve();
+    }
   });
+}
+
+Promise.all([imagesLoaded(), logoAnimationEnded()])
+  .then(() => {
+    startTimeline();
+  })
+  .catch((error) => {
+    console.error('Animation setup failed:', error);
+    startHeaderAnimation();
+  });
+
+// rollImgs.forEach((img) => {
+//   if (img.complete) {
+//     loadedCount++;
+//   } else {
+//     img.addEventListener('load', () => {
+//       loadedCount++;
+//       if (loadedCount === rollImgs.length) {
+//         imgLoaded();
+//       }
+//     });
+//   }
+// });
+
+// if (loadedCount === rollImgs.length) {
+//   imgLoaded();
+// }
+
+function startTimeline() {
+  const headerTl = gsap.timeline();
+
+  headerTl
+    .set(
+      '.sc-header .group-images',
+      {
+        animationPlayState: 'running',
+      },
+      'l+=.25'
+    )
+
+    .to(
+      '.sc-header .group-logo .logo .logo-full',
+      0,
+      { opacity: 0, ease: 'none' },
+      'm'
+    )
+    .to(
+      '.sc-header .group-images .mask-bg',
+      0,
+      { opacity: 1, ease: 'none' },
+      'm'
+    )
+
+    .to(
+      '.sc-header .group-images .img-roll .filter',
+      0,
+      { opacity: 1 },
+      'n+=.5'
+    )
+    .to(
+      '.sc-header .group-images .img-roll',
+      { duration: 2, opacity: 1 },
+      'n+=.5'
+    )
+    .to(
+      '.sc-header .group-images .img-roll',
+      { duration: 2.5, scale: 1 },
+      'n+=.5'
+    )
+    .to(
+      '.sc-header .container.roll .letter',
+      {
+        yPercent: 0,
+        opacity: 1,
+        stagger: {
+          each: 0.1,
+        },
+      },
+      'n+=.5'
+    )
+
+    .to(
+      '.sc-header .group-images .img-roll img:first-child',
+      {
+        duration: 0.5,
+        visibility: 'visible',
+        onComplete: () => {
+          gsap.set('.sc-header .group-images .img-roll img:first-child', {
+            visibility: 'hidden',
+          });
+        },
+      },
+      'n+=.5'
+    )
+
+    .to(
+      '.sc-header .group-images .img-roll img:not(:first-child)',
+      {
+        visibility: 'visible',
+        stagger: {
+          each: 0.1,
+          onComplete: () => {
+            gsap.set(
+              '.sc-header .group-images .img-roll img:not(:first-child)',
+              {
+                visibility: 'hidden',
+              }
+            );
+          },
+        },
+      },
+      'n+=1'
+    )
+
+    .to(
+      '.sc-header .bg',
+      {
+        opacity: 1,
+      },
+      'n+=1'
+    )
+
+    .to(
+      '.sc-header .group-images .img',
+      {
+        visibility: 'visible',
+      },
+      'o-=.3'
+    )
+
+    .to('.sc-header .group-images', { height: '80%' }, 'p')
+    .to('.sc-header .container.roll .letter', 1, { opacity: 0 }, 'p+=.2')
+    .to('.sc-header .container', 1, { opacity: 1 }, 'p+=.2')
+    .to('.sc-header .desc', 1, { y: 0 }, 'p+=.2')
+    .to('.sc-header .desc', 1, { y: 0 }, 'p+=.2')
+    .to('.header .logo', { visibility: 'visible' }, 'p+=.2')
+    .to(
+      '.header .ani a svg .logo-top',
+      {
+        duration: 1.25,
+        animationPlayState: 'running',
+      },
+      'p+=.4'
+    )
+    .to(
+      '.header .ani a svg .logo-bottom',
+      {
+        duration: 1.25,
+        animationPlayState: 'running',
+        onComplete: function () {
+          $('.header .logo').removeClass('ani');
+
+          $('.header .logo').hover(function () {
+            $('.header .logo').addClass('draw');
+          });
+
+          $('.header .logo').on('animationend', function () {
+            $(this).removeClass('draw');
+          });
+        },
+      },
+      'p+=.4'
+    )
+    .to(
+      '.header .btn-area .btn-shop',
+      { animationPlayState: 'running' },
+      'p+=.4'
+    )
+    .to(
+      '.header .btn-area .btn-contact',
+      { animationPlayState: 'running' },
+      'p+=.4'
+    );
 }
 
 // const introTl = gsap.timeline({
