@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>한섬 EQL</title>
+    <meta property="og:type" content="Website"/>
+	<meta property="og:title" content="EQL STORE"/>
+	<meta property="og:url" content="https://www.eqlstore.com/main"/>
+	<meta property="og:image" content="./assets/images/eql-og.jpeg"/>
+	<meta property="og:description" content="EQL은 EQUAL의 철자를 축약한 신조어로, 어떠한 편견이나 선입견 없이 자유롭게 표현할 수 있는 패션을 지지하는 편집숍입니다"/>
+
+    <link rel="shortcut icon" href="./assets/images/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="./assets/css/style.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.27/bundled/lenis.min.js"></script> 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="./assets/js/index.js" defer></script>
+</head>
+<body>
+    <div class="wrapper">
+        <header class="header">
+            <h1 class="logo ani">
+                <a href="">
+                    <span class="blind">EQL</span>
+                    <svg width="20" height="16" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path class="logo-top" d="M0 3.5H20" stroke="#d2d7dd" stroke-width="7"/>
+                        <path class="logo-bottom" d="M0 12.5H20" stroke="#d2d7dd" stroke-width="7"/>
+                    </svg>
+                </a>
+            </h1>
+            <div class="btn-area">
+                <button class="btn-basket">
+                    <svg class="ic-basket" viewBox="0 0 19 16" width="16" height="14" fill="none">
+                        <path d="m12.53 1 2.54 4.45m-10.18 0L7.44 1m9.26 4.45H3.26A1.27 1.27 0 0 0 2 6.98l1.4 7A1.27 1.27 0 0 0 4.66 15H15.3a1.27 1.27 0 0 0 1.27-1.02l1.4-7a1.27 1.27 0 0 0-1.27-1.53Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>
+                    <i class="ic-left"></i>
+                    <i class="ic-right"></i>
+                </button>
+                <button class="btn-shop">              
+                    <svg class="ic-shop" viewBox="0 0 18 18" width="18" height="18" fill="none">
+                        <path d="M2.14 2.94h13.72c.54 0 .98-.44.98-.97a.98.98 0 0 0-.98-.97H2.14a.98.98 0 0 0-.98.97c0 .53.44.97.98.97ZM17 5.17a.98.98 0 0 0-.96-.78H1.96a.98.98 0 0 0-.96.78l-.98 4.85a.98.98 0 0 0 .96 1.16h.18v4.85c0 .53.44.97.98.97h7.84c.54 0 .98-.44.98-.97v-4.85h3.92v4.85a.98.98 0 0 0 1.96 0v-4.85h.18a.98.98 0 0 0 .96-1.16L17 5.17Zm-8 9.9H3.12v-3.89H9v3.88Z" fill="currentColor"></path>
+                    </svg>
+                    <span class="name"><span>SHOP</span></span>
+                    <i class="ic-left"></i>
+                    <i class="ic-right"></i>
+                </button>
+                <button class="btn-contact">
+                    <svg class="ic-contact" viewBox="0 0 18 18" width="18" height="18" fill="none">
+                        <path d="M9 17a8.13 8.13 0 0 1-7.37-4.9C1.21 11.13 1 10.1 1 9s.21-2.14.63-3.11A8.14 8.14 0 0 1 5.9 1.63C6.87 1.21 7.9 1 9 1s2.14.21 3.11.63a8.14 8.14 0 0 1 4.26 4.26c.42.97.63 2 .63 3.11v1.16c0 .79-.27 1.46-.81 2.01a2.88 2.88 0 0 1-3.33.51 3 3 0 0 1-1.02-.84A3.97 3.97 0 0 1 9 13c-1.1 0-2.05-.39-2.83-1.17A3.85 3.85 0 0 1 5 9c0-1.1.39-2.05 1.17-2.83A3.85 3.85 0 0 1 9 5c1.1 0 2.05.39 2.83 1.17A3.85 3.85 0 0 1 13 9v1.16a1.17 1.17 0 0 0 1.2 1.24 1.17 1.17 0 0 0 1.2-1.24V9c0-1.75-.63-3.25-1.89-4.51A6.15 6.15 0 0 0 9 2.6c-1.75 0-3.25.63-4.51 1.89A6.15 6.15 0 0 0 2.6 9c0 1.75.63 3.25 1.89 4.51A6.15 6.15 0 0 0 9 15.4h3.2c.23 0 .42.08.57.23.15.15.23.34.23.57 0 .23-.08.42-.23.57a.77.77 0 0 1-.57.23H9Zm0-5.6c.67 0 1.23-.23 1.7-.7s.7-1.03.7-1.7a2.3 2.3 0 0 0-.7-1.7A2.31 2.31 0 0 0 9 6.6c-.67 0-1.23.23-1.7.7S6.6 8.33 6.6 9c0 .67.23 1.23.7 1.7s1.03.7 1.7.7Z" fill="currentColor"></path>
+                    </svg>
+                    <span class="name"><span>CONTACT</span></span>
+                    <i class="ic-left"></i>
+                    <i class="ic-right"></i>
+                </button>
+            </div>
+        </header>
+
+        <main class="main">
+            <section class="sc-header">
+                <div class="group-logo">
+                    <div class="logo"><span class="blind">EQL</span>
+                        <svg class="logo-full" width="100" height="109" viewBox="0 0 100 109" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g class="logo-draw" stroke="#2d2822" stroke-width="17.5" style="opacity:1;">
+                                <path class="logo-top" d="M25 31H75"/>
+                                <path class="logo-bottom" d="M25 9H75"/>
+                            </g>
+                            <g class="logotype-small" fill="#2d2822" style="opacity: 1;">
+                                <g class="letter" style="--index: 1;">
+                                    <path d="M29.214 106.306H0V68.506H28.782V76.552H9.288V83.086H28.08V91.132H9.288V98.26H29.214V106.306Z"/>
+                                </g>
+                                <g class="letter" style="--index: 2;">
+                                    <path d="M69.99 87.406C69.99 92.41 68.496 96.73 65.508 100.366L68.856 103.876L63.834 108.844L60.054 104.794C57.318 106.306 54.24 107.062 50.82 107.062C45.24 107.062 40.65 105.172 37.05 101.392C33.45 97.576 31.65 92.914 31.65 87.406C31.65 81.862 33.45 77.218 37.05 73.474C40.65 69.658 45.24 67.75 50.82 67.75C56.4 67.75 60.99 69.658 64.59 73.474C68.19 77.218 69.99 81.862 69.99 87.406ZM50.82 98.962C51.972 98.962 53.07 98.782 54.114 98.422L50.064 94.048L54.924 89.35L59.19 93.778C60.198 91.906 60.702 89.782 60.702 87.406C60.702 84.346 59.82 81.664 58.056 79.36C56.328 77.02 53.916 75.85 50.82 75.85C47.76 75.85 45.33 77.02 43.53 79.36C41.802 81.7 40.938 84.382 40.938 87.406C40.938 90.502 41.802 93.202 43.53 95.506C45.294 97.81 47.724 98.962 50.82 98.962Z"/>
+                                </g>
+                                <g class="letter" style="--index: 3;">
+                                    <path d="M99.946 106.306H73V68.506H82.288V98.206H99.946V106.306Z"/>
+                                </g>
+                            </g>
+                        </svg>
+                    </div>
+                </div>
+
+                <div class="group-images">
+                    <div class="mask-bg"></div>
+                    <div class="img-roll">
+                        <img src="./assets/images/roll1.jpg" alt="">
+                        <img src="./assets/images/roll2.jpg" alt="">
+                        <img src="./assets/images/roll3.jpg" alt="">
+                        <img src="./assets/images/roll4.jpg" alt="">
+                        <img src="./assets/images/roll5.jpg" alt="">
+                        <img src="./assets/images/roll6.jpg" alt="">
+                        <img src="./assets/images/roll7.jpg" alt="">
+                        <img src="./assets/images/roll8.jpg" alt="">
+                        <img src="./assets/images/roll9.jpg" alt="">
+                        <img src="./assets/images/roll10.jpg" alt="">
+                        <img src="./assets/images/roll11.jpg" alt="">
+                        <img src="./assets/images/roll12.jpg" alt="">
+                        <img src="./assets/images/roll13.jpg" alt="">
+                        <img src="./assets/images/roll14.jpg" alt="">
+                        <img src="./assets/images/roll15.jpg" alt="">
+                        <img src="./assets/images/roll16.jpg" alt="">
+                        <img src="./assets/images/roll18.jpg" alt="">
+                        <img src="./assets/images/roll19.jpg" alt="">
+                        <img src="./assets/images/roll20.jpg" alt="">
+                        <img src="./assets/images/roll21.jpg" alt="">
+                        <div class="filter"></div>
+                    </div>
+                    <div class="img"><img src="./assets/images/sc-header.png" alt=""></div>
+                </div>
+
+                <h2 class="container roll">
+                    <span class="blind">EQL</span>
+                    <svg width="389" height="160" viewBox="0 0 389 160" fill="none" xmlns="http://www.w3.org/2000/svg"> 
+                        <g> 
+                            <g class="letter"> <path d="M114.26 150H0.650024V3H112.58V34.29H36.77V59.7H109.85V90.99H36.77V118.71H114.26V150Z"/> </g>
+                            <g class="letter"> <path d="M271.5 76.5C271.5 95.96 265.69 112.76 254.07 126.9L267.09 140.55L247.56 159.87L232.86 144.12C222.22 150 210.25 152.94 196.95 152.94C175.25 152.94 157.4 145.59 143.4 130.89C129.4 116.05 122.4 97.92 122.4 76.5C122.4 54.94 129.4 36.88 143.4 22.32C157.4 7.48 175.25 0.0599976 196.95 0.0599976C218.65 0.0599976 236.5 7.48 250.5 22.32C264.5 36.88 271.5 54.94 271.5 76.5ZM196.95 121.44C201.43 121.44 205.7 120.74 209.76 119.34L194.01 102.33L212.91 84.06L229.5 101.28C233.42 94 235.38 85.74 235.38 76.5C235.38 64.6 231.95 54.17 225.09 45.21C218.37 36.11 208.99 31.56 196.95 31.56C185.05 31.56 175.6 36.11 168.6 45.21C161.88 54.31 158.52 64.74 158.52 76.5C158.52 88.54 161.88 99.04 168.6 108C175.46 116.96 184.91 121.44 196.95 121.44Z"/> </g>
+                            <g class="letter"> <path d="M388.44 150H283.65V3H319.77V118.5H388.44V150Z"/> </g>
+                        </g> 
+                    </svg>
+                </h2>
+
+                <h2 class="container">
+                    <span class="blind">EQL</span>
+                    <svg width="389" height="160" viewBox="0 0 389 160" fill="none" xmlns="http://www.w3.org/2000/svg"> <g> <path d="M114.26 150H0.650024V3H112.58V34.29H36.77V59.7H109.85V90.99H36.77V118.71H114.26V150Z"/> <path d="M271.5 76.5C271.5 95.96 265.69 112.76 254.07 126.9L267.09 140.55L247.56 159.87L232.86 144.12C222.22 150 210.25 152.94 196.95 152.94C175.25 152.94 157.4 145.59 143.4 130.89C129.4 116.05 122.4 97.92 122.4 76.5C122.4 54.94 129.4 36.88 143.4 22.32C157.4 7.48 175.25 0.0599976 196.95 0.0599976C218.65 0.0599976 236.5 7.48 250.5 22.32C264.5 36.88 271.5 54.94 271.5 76.5ZM196.95 121.44C201.43 121.44 205.7 120.74 209.76 119.34L194.01 102.33L212.91 84.06L229.5 101.28C233.42 94 235.38 85.74 235.38 76.5C235.38 64.6 231.95 54.17 225.09 45.21C218.37 36.11 208.99 31.56 196.95 31.56C185.05 31.56 175.6 36.11 168.6 45.21C161.88 54.31 158.52 64.74 158.52 76.5C158.52 88.54 161.88 99.04 168.6 108C175.46 116.96 184.91 121.44 196.95 121.44Z"/> <path d="M388.44 150H283.65V3H319.77V118.5H388.44V150Z"/> </g> </svg>
+                </h2>            
+                <p class="desc container">EQL은 EQUAL의 철자를 축약한 신조어로, 어떠한 편견이나 선입견 없이 자유롭게 표현할 수 있는 패션을 지지하는 편집숍입니다.</p>
+                <div class="bg"></div>
+            </section>
+
+            <section class="sc-introduce">
+                <div class="group-introduce">
+                    <h2 class="blind">EQL 소개</h2>
+                    <div class="sticky-introduce">
+                        <div class="bg-invert"></div>
+                        <div class="bg-white"></div>
+                        <div class="bg">
+                            <div class="img1"><img src="./assets/images/sc-introduce.jpg" alt=""></div>
+                            <div class="video"> <video src="./assets/videos/sc-introduce.mp4" autoplay muted loop></video> </div>
+                            <div class="img2"><img src="./assets/images/sc-introduce2.png" alt=""></div>
+                        </div>
+                        <div class="box1">
+                            <p class="title"><span>We</span>&nbsp;<span>are</span></p>
+                        </div>
+                        <div class="box2">
+                            <p class="text">
+                                <span class="line">
+                                    <span>which is</span>
+                                </span>
+                                <span class="line">
+                                    <span>stand for</span>
+                                </span>
+                            </p>
+                        </div>
+                        <div class="box3">
+                            <p class="title"><span>EQL</span></p>
+                        </div>
+                        <div class="box4">
+                            <p class="text"><span>equal</span></p>
+                        </div>
+                        <div class="box5">
+                            <p class="text">
+                                <span class="line">
+                                    <span>we</span>&nbsp;
+                                    <span>embrace</span>&nbsp;
+                                    <span>fast-changing</span>&nbsp;
+                                </span>
+
+                                <span class="line">
+                                    <span>trends</span>&nbsp;
+                                    <span>and</span>&nbsp;
+                                    <span>cherish</span>&nbsp;
+                                    <span>the</span>&nbsp;
+                                    <span>process</span>&nbsp;
+                                    
+                                </span>
+                                <span class="line">
+                                    <span>of</span>&nbsp;
+                                    <span>finding</span>&nbsp;
+                                    <span>our</span>&nbsp;
+                                    <span>own</span>&nbsp;
+                                    <span>values.</span>
+                                </span>
+                            </p>
+                        </div>
+                        <div class="box6">
+                            <p class="title">
+                                <span>w</span>
+                                <span>e</span>&nbsp;
+                                <span>a</span>
+                                <span>r</span>
+                                <span>e</span>&nbsp;
+                                <span>a</span>
+                                <span>l</span>
+                                <span>l</span>&nbsp;
+                                <span>e</span>
+                                <span>q</span>
+                                <span>u</span>
+                                <span>a</span>
+                                <span>l</span>
+                                <span>.</span>
+                            </p>
+                        </div>
+                        <div class="title-box container">
+                            <div class="title-blue">
+                                <p class="title"><span>EQL</span>
+                                </p>
+                                <p class="title right"><span>supports</span></p>
+                                <p class="title"><span>freedom</span>&nbsp;<span>of</span></p>
+                                <p class="title right"><span>expression</span></p>
+                                <p class="title"><span>through</span>&nbsp;<span>style</span></p>
+                            </div>
+                            <div class="title-beige">
+                                <p class="title"><span>reinterpret</span></p>
+                                <p class="title right"><span>your</span></p>
+                                <p class="title right"><span>own</span>&nbsp;<span>style</span></p>
+                                <p class="title"><span>based</span>&nbsp;<span>on</span></p>
+                                <p class="title"><span>individuality</span></p>
+                            </div>
+                        </div>
+                        <svg class="grid-shape" viewBox="0 0  1440 900" fill="none" preserveAspectRatio="none">
+                            <rect x="0" y="0" width="360.5" height="300.5" class="grid-rect"></rect>
+                            <rect x="360" y="0" width="360.5" height="300.5" class="grid-rect"></rect>
+                            <rect x="720" y="0" width="360.5" height="300.5" class="grid-rect"></rect>
+                            <rect x="1080" y="0" width="360.5" height="300.5" class="grid-rect"></rect>
+                            <rect x="0" y="300" width="360.5" height="300.5" class="grid-rect"></rect>
+                            <rect x="360" y="300" width="360.5" height="300.5" class="grid-rect"></rect>
+                            <rect x="720" y="300" width="360.5" height="300.5" class="grid-rect"></rect>
+                            <rect x="1080" y="300" width="360.5" height="300.5" class="grid-rect"></rect>
+                            <rect x="0" y="600" width="360.5" height="300.5" class="grid-rect"></rect>
+                            <rect x="360" y="600" width="360.5" height="300.5" class="grid-rect"></rect>
+                            <rect x="720" y="600" width="360.5" height="300.5" class="grid-rect"></rect>
+                            <rect x="1080" y="600" width="360.5" height="300.5" class="grid-rect"></rect>
+                        </svg>             
+                    </div>
+                </div>
+            </section>
+
+            <section class="sc-contents">
+                    <div class="group-contents container">
+                        <div class="img"><img src="./assets/images/sc-contents.png" alt=""></div>
+                        <div class="video">
+                            <video src="./assets/videos/sc-contents.mp4" autoplay muted loop></video>
+                        </div>
+                        <svg class="shape svelte-1b0iixh" width="394" height="394" viewBox="0 0 394 394" fill="none"><path d="m394.79 207.12-160.6-2.77 149.24 58.5-8.03 19.41-146.74-64.88 115.73 111.18-14.95 14.98-111.03-115.35 63.96 146.4-19.1 8.6-58.42-150L208.17 394h-21.04l3.6-160.82-58.43 150-19.38-8.59 64.24-146.4-111.3 115.35-14.68-14.98L166.9 217.38l-147 64.88-7.75-19.4 148.96-58.51L.79 207.68v-21.63l160.3 3.6-148.95-58.5 7.75-19.41 147.02 64.88L51.18 65.16l14.67-14.7 111.3 115.35-64.23-146.68 19.38-8.32 58.42 149.73L187.13 0h21.05l-3.32 160.54L263.27 10.8l19.1 8.32-63.96 146.68L329.44 50.46l14.95 14.7-115.73 111.46 146.74-64.88 8.03 19.4-149.23 58.51 160.59-3.6v21.07Z" fill="currentColor"></path></svg>
+                        <h2 class="title">
+                            <span class="line"> <span>EQL에는&nbsp;</span><span>어디에도&nbsp;</span><span>없는</span></span>
+                            <span class="line"> <span>다양한&nbsp;</span><span>콘텐츠로</span></span>
+                            <span class="line"><span>가득합니다.</span></span>
+                        </h2>
+                        <p class="title2">
+                            <span class="line">
+                                <span>EQL&nbsp;</span><span>큐레이션을&nbsp;</span><span>만나고,</span>
+                            </span>
+                            <span class="line">
+                                <span>당신의&nbsp;</span><span>일상을&nbsp;</span><span>모험으로</span>
+                            </span>
+                            <span class="line"><span>채워보세요.</span></span>
+                        </p>
+                    </div>
+
+                    <div class="group-letter">
+                        <div class="title-area">
+                            <p class="title"><span>We are</span> <span>all</span><span>EQL.</span></p>
+                        </div>
+                        <div class="letter-area">
+                            <div class="letter-wrap">
+                                <span>q</span><span>e</span><span>q</span><span>l</span><span>e</span>
+                                <span>e</span><span>q</span><span>l</span><span>q</span><span>e</span>
+                                <span>l</span><span>e</span><span>q</span><span>e</span><span>l</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+            </section>
+
+            <section class="sc-saltypebble">
+                <div class="group-saltypebble container">
+                    <div class="video-area">
+                        <video src="./assets/videos/sc-saltypebble.mp4" autoplay muted loop></video>
+                    </div>
+                    <svg class="squares" width="630" height="738" viewBox="0 0 630 738"><g transform="translate(0 0)"><g><rect y="0" x="0" width="20" height="20" fill="currentColor" class="svelte-1sgvpj9" ></rect><rect y="76" x="0" width="20" height="20" fill="currentColor" class="svelte-1sgvpj9" ></rect><rect y="152" x="0" width="20" height="20" fill="currentColor" class="svelte-1sgvpj9" ></rect><rect y="228" x="0" width="20" height="20" fill="currentColor" class="svelte-1sgvpj9" ></rect><rect y="304" x="0" width="20" height="20" fill="currentColor" class="svelte-1sgvpj9" ></rect><rect y="380" x="0" width="20" height="20" fill="currentColor" class="svelte-1sgvpj9" ></rect><rect y="456" x="0" width="20" height="20" fill="currentColor" class="svelte-1sgvpj9" ></rect><rect y="532" x="0" width="20" height="20" fill="currentColor" class="svelte-1sgvpj9" ></rect><rect y="608" x="0" width="20" height="20" fill="currentColor" class="svelte-1sgvpj9" ></rect><rect y="684" x="0" width="20" height="20" fill="currentColor" class="svelte-1sgvpj9" ></rect></g></g><g transform="translate(100 34)"><g style="transform: translateY(-44.0249px);"><rect y="0" x="0" width="20" height="20" fill="currentColor" class="svelte-1sgvpj9" ></rect><rect y="76" x="0" width="20" height="20" fill="currentColor" class="svelte-1sgvpj9" ></rect><rect y="152" x="0" width="20" height="20" fill="currentColor" class="svelte-1sgvpj9" ></rect><rect y="228" x="0" width="20" height="20" fill="currentColor" class="svelte-1sgvpj9" ></rect><rect y="304" x="0" width="20" height="20" fill="currentColor" class="svelte-1sgvpj9" ></rect><rect y="380" x="0" width="20" height="20" fill="currentColor" class="svelte-1sgvpj9" ></rect><rect y="456" x="0" width="20" height="20" fill="currentColor" class="svelte-1sgvpj9" ></rect><rect y="532" x="0" width="20" height="20" fill="currentColor" class="svelte-1sgvpj9" ></rect><rect y="608" x="0" width="20" height="20" fill="currentColor" class="svelte-1sgvpj9" ></rect><rect y="684" x="0" width="20" height="20" fill="currentColor" class="svelte-1sgvpj9" ></rect></g></g><g transform="translate(200 0)"><g><rect y="0" x="0" width="20" height="20" fill="currentColor" class="svelte-1sgvpj9" ></rect><rect y="76" x="0" width="20" height="20" fill="currentColor" class="svelte-1sgvpj9" ></rect><rect y="152" x="0" width="20" height="20" fill="currentColor" class="svelte-1sgvpj9" ></rect><rect y="228" x="0" width="20" height="20" fill="currentColor" class="svelte-1sgvpj9" ></rect><rect y="304" x="0" width="20" height="20" fill="currentColor" class="svelte-1sgvpj9" ></rect><rect y="380" x="0" width="20" height="20" fill="currentColor" class="svelte-1sgvpj9" ></rect><rect y="456" x="0" width="20" height="20" fill="currentColor" class="svelte-1sgvpj9" ></rect><rect y="532" x="0" width="20" height="20" fill="currentColor" class="svelte-1sgvpj9" ></rect><rect y="608" x="0" width="20" height="20" fill="currentColor" class="svelte-1sgvpj9" ></rect><rect y="684" x="0" width="20" height="20" fill="currentColor" class="svelte-1sgvpj9" ></rect></g></g><g transform="translate(300 34)"><g style="transform: translateY(-44.0249px);"><rect y="0" x="0" width="20" height="20" fill="currentColor" class="svelte-1sgvpj9" ></rect><rect y="76" x="0" width="20" height="20" fill="currentColor" class="svelte-1sgvpj9" ></rect><rect y="152" x="0" width="20" height="20" fill="currentColor" class="svelte-1sgvpj9" ></rect><rect y="228" x="0" width="20" height="20" fill="currentColor" class="svelte-1sgvpj9" ></rect><rect y="304" x="0" width="20" height="20" fill="currentColor" class="svelte-1sgvpj9" ></rect><rect y="380" x="0" width="20" height="20" fill="currentColor" class="svelte-1sgvpj9" ></rect><rect y="456" x="0" width="20" height="20" fill="currentColor" class="svelte-1sgvpj9" ></rect><rect y="532" x="0" width="20" height="20" fill="currentColor" class="svelte-1sgvpj9" ></rect><rect y="608" x="0" width="20" height="20" fill="currentColor" class="svelte-1sgvpj9" ></rect><rect y="684" x="0" width="20" height="20" fill="currentColor" class="svelte-1sgvpj9" ></rect></g></g><g transform="translate(400 0)"><g><rect y="0" x="0" width="20" height="20" fill="currentColor" class="svelte-1sgvpj9" ></rect><rect y="76" x="0" width="20" height="20" fill="currentColor" class="svelte-1sgvpj9" ></rect><rect y="152" x="0" width="20" height="20" fill="currentColor" class="svelte-1sgvpj9" ></rect><rect y="228" x="0" width="20" height="20" fill="currentColor" class="svelte-1sgvpj9" ></rect><rect y="304" x="0" width="20" height="20" fill="currentColor" class="svelte-1sgvpj9" ></rect><rect y="380" x="0" width="20" height="20" fill="currentColor" class="svelte-1sgvpj9" ></rect><rect y="456" x="0" width="20" height="20" fill="currentColor" class="svelte-1sgvpj9" ></rect><rect y="532" x="0" width="20" height="20" fill="currentColor" class="svelte-1sgvpj9" ></rect><rect y="608" x="0" width="20" height="20" fill="currentColor" class="svelte-1sgvpj9" ></rect><rect y="684" x="0" width="20" height="20" fill="currentColor" class="svelte-1sgvpj9" ></rect></g></g><g transform="translate(500 34)"><g style="transform: translateY(-44.0249px);"><rect y="0" x="0" width="20" height="20" fill="currentColor" class="svelte-1sgvpj9" ></rect><rect y="76" x="0" width="20" height="20" fill="currentColor" class="svelte-1sgvpj9" ></rect><rect y="152" x="0" width="20" height="20" fill="currentColor" class="svelte-1sgvpj9" ></rect><rect y="228" x="0" width="20" height="20" fill="currentColor" class="svelte-1sgvpj9" ></rect><rect y="304" x="0" width="20" height="20" fill="currentColor" class="svelte-1sgvpj9" ></rect><rect y="380" x="0" width="20" height="20" fill="currentColor" class="svelte-1sgvpj9" ></rect><rect y="456" x="0" width="20" height="20" fill="currentColor" class="svelte-1sgvpj9" ></rect><rect y="532" x="0" width="20" height="20" fill="currentColor" class="svelte-1sgvpj9" ></rect><rect y="608" x="0" width="20" height="20" fill="currentColor" class="svelte-1sgvpj9" ></rect><rect y="684" x="0" width="20" height="20" fill="currentColor" class="svelte-1sgvpj9" ></rect></g></g><g transform="translate(600 0)"><g><rect y="0" x="0" width="20" height="20" fill="currentColor" class="svelte-1sgvpj9" ></rect><rect y="76" x="0" width="20" height="20" fill="currentColor" class="svelte-1sgvpj9" ></rect><rect y="152" x="0" width="20" height="20" fill="currentColor" class="svelte-1sgvpj9" ></rect><rect y="228" x="0" width="20" height="20" fill="currentColor" class="svelte-1sgvpj9" ></rect><rect y="304" x="0" width="20" height="20" fill="currentColor" class="svelte-1sgvpj9" ></rect><rect y="380" x="0" width="20" height="20" fill="currentColor" class="svelte-1sgvpj9" ></rect><rect y="456" x="0" width="20" height="20" fill="currentColor" class="svelte-1sgvpj9" ></rect><rect y="532" x="0" width="20" height="20" fill="currentColor" class="svelte-1sgvpj9" ></rect><rect y="608" x="0" width="20" height="20" fill="currentColor" class="svelte-1sgvpj9" ></rect><rect y="684" x="0" width="20" height="20" fill="currentColor" class="svelte-1sgvpj9" ></rect></g></g></svg>
+                    <div class="text-area">
+                        <h2 class="title">
+                            <span>EQL x</span>
+                            <span>Salty Pebble</span>
+                        </h2>
+                        <p class="text"> 
+                            일정한 형식이나 틀을 갖추지 않은 조약돌의 본질을 바라보고 비정형화적인 이미지에 맞춰 “형식적인 틀을 깨는 자유로운 여성”의 의미를 가진 컨템포러리 브랜드 솔티페블을 EQL에서 만나보세요.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="sc-video">
+                <div class="group-video container">
+                    <div class="video1">
+                        <video src="./assets/videos/sc-video.mp4" autoplay muted loop></video>
+                    </div>
+                    <div class="video2">
+                        <video src="./assets/videos/sc-video2.mp4" autoplay muted loop></video>
+                    </div>
+                    <div class="video3">
+                        <video src="./assets/videos/sc-video3.mp4" autoplay muted loop></video>
+                    </div>
+                    <div class="video4">
+                        <img src="./assets/images/sc-video.gif" alt="">
+                    </div>
+                    <svg class="shapes" viewBox="0 0 840 703" fill="none" preserveAspectRatio="none">
+                        <g fill="currentColor">
+                            <rect x="121.801" width="68.25" height="453.6" class="svelte-1bpr39y"></rect>
+                            <rect x="325.5" width="121.8" height="453.6" class="svelte-1bpr39y" ></rect>
+                            <rect x="718.199" width="121.8" height="453.6" class="svelte-1bpr39y"></rect>
+                            <rect y="454" width="121.8" height="248.85" class="svelte-1bpr39y" ></rect>
+                            <rect x="257.249" y="453.6" width="68.25" height="248.85" class="svelte-1bpr39y" ></rect>
+                            <rect x="649.949" y="453.6" width="68.25" height="248.85" class="svelte-1bpr39y" ></rect></g></svg>
+                    <p class="text">
+                        나의 작은 세상이 전부같았던 그 시절 젊음이 주는 무모한 열정과 용기로 친구들과 떠나는 어설픈 여행 우리 모두는 그 향수(鄕愁)를 품고 산다.
+                    </p>
+                </div>
+            </section>
+                    
+            <section class="sc-honsby">
+                <div class="group-right">
+                    <div class="video1">
+                        <img src="./assets/images/sc-honsby.jpg" alt="Mayflies: Honsby">
+                    </div>
+                    <div class="bg"></div>
+                </div>
+                <div class="group-left container">
+                    <div class="left-area">
+                        <h2 class="title"><span class="line"><span>Mayflies:</span></span><span class="line"><span></span></span><span class="line"><span>Honsby</span></span></h2>
+                        <div class="video2">
+                            <video src="./assets/videos/sc-honsby.mp4" autoplay muted loop></video>
+                        </div>
+                    </div>
+                    <p class="text">
+                        조약돌, 시계, 무성한 잔디, 가로등. 세상의 모든 것들은 각자만의 고유한 시간이 있다. 어제도 오늘도 생각하지 않는 우리들의 시간은 단 하루! 우리는 오늘 어디로 향하게 될까?
+                    </p>
+                </div>
+            </section>
+            
+            <section class="sc-hunter">
+                <div class="group-hunter container">
+                    <div class="video1">
+                        <video src="./assets/videos/sc-hunter.mp4" autoplay muted loop></video>
+                        <div class="overlay"></div>
+                    </div>
+                    <h2 class="title">
+                        <span>160년</span> <span>역사를</span> <span>지닌</span> <span>HUNTER는</span>
+                        <span>클래식한</span> <span>패션</span> <span>아이템으로</span>
+                        <span>전 세계의</span> <span>많은</span> <span>이들의</span> <span>사랑을</span>
+                        <span>받아</span><span>오고</span> <span>있습니다.</span>
+                        <br><br>
+                        <span>헤리티지에</span> <span>충실함과</span> <span>동시에</span> <span>끊임없는</span>
+                        <span>디자인</span> <span>혁신을</span> <span>통해</span> <span>진화하고</span>
+                        <span>있는</span> <span>브랜드</span> <span>헌터를</span> <span>EQL에서</span> <span>만나보세요.</span>
+                    </h2>
+                </div>
+            </section>
+
+            <section class="sc-collage">
+                <h2 class="blind">사진 콜라주</h2>
+                <div class="group-collage container">
+                    <div class="letter-area">
+                        <svg class="letter-spin" width="631" height="811" viewBox="0 0 631 811" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M8 803V8H623V188.476H203.501V322.378H589.201V480.86H203.501V622.524H623V803H8Z" stroke="currentColor" stroke-width="16"/></svg>
+                        <svg class="letter-spin" width="631" height="811" viewBox="0 0 631 811" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M8 803V8H623V188.476H203.501V322.378H589.201V480.86H203.501V622.524H623V803H8Z" stroke="currentColor" stroke-width="16"/></svg>
+                        <svg class="letter-spin" width="631" height="811" viewBox="0 0 631 811" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M8 803V8H623V188.476H203.501V322.378H589.201V480.86H203.501V622.524H623V803H8Z" stroke="currentColor" stroke-width="16"/></svg>
+                        <svg class="letter-spin" width="631" height="811" viewBox="0 0 631 811" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M8 803V8H623V188.476H203.501V322.378H589.201V480.86H203.501V622.524H623V803H8Z" stroke="currentColor" stroke-width="16"/></svg>
+                    </div>
+
+                    <div class="text-animation">
+                        <div class="line-box">
+                            <div class="line"></div>
+                            <div class="line"></div>
+                        </div>
+                        <div class="line-box">
+                            <div class="line"></div>
+                            <div class="line"></div>
+                        </div>
+                        <div class="line-box">
+                            <div class="line"></div>
+                            <div class="line"></div>
+                        </div>
+                        <div class="line-box">
+                            <div class="line"></div>
+                            <div class="line"></div>
+                        </div>
+                        <div class="line-box">
+                            <div class="line"></div>
+                            <div class="line"></div>
+                        </div>
+                        <div class="line-box">
+                            <div class="line"></div>
+                            <div class="line"></div>
+                        </div>
+                        <div class="line-box">
+                            <div class="line"></div>
+                            <div class="line"></div>
+                        </div>
+                        <div class="line-box">
+                            <div class="line"></div>
+                            <div class="line"></div>
+                        </div>
+                        <div class="line-box">
+                            <div class="line"></div>
+                            <div class="line"></div>
+                        </div>
+                        <div class="line-box">
+                            <div class="line"></div>
+                            <div class="line"></div>
+                        </div>
+                        <div class="line-box">
+                            <div class="line"></div>
+                            <div class="line"></div>
+                        </div>
+                        <div class="line-box">
+                            <div class="line"></div>
+                            <div class="line"></div>
+                        </div>
+                        <div class="line-box">
+                            <div class="line"></div>
+                            <div class="line"></div>
+                        </div>
+                        <div class="line-box">
+                            <div class="line"></div>
+                            <div class="line"></div>
+                        </div>
+                        <div class="line-box">
+                            <div class="line"></div>
+                            <div class="line"></div>
+                        </div>
+                    </div>
+
+                    <div class="img1"><img src="./assets/images/sc-collage.jpg" alt=""></div>
+                    <div class="img2"><img src="./assets/images/sc-collage2.jpg" alt=""></div>
+                    <div class="img3"><img src="./assets/images/sc-collage3.jpg" alt=""></div>
+                </div>
+            </section>
+
+            <section class="sc-minumsa">
+                <h2 class="blind">EQL Studio x 민음사</h2>
+                <div class="video">
+                    <video src="./assets/videos/sc-minumsa.mp4" autoplay muted loop></video>
+                </div>
+                <div class="group-text">
+                    <div class="text-area container">
+                        <p class="text1">
+                            <span class="char">각</span>
+                            <span class="char">자</span>
+                            <span class="char">의</span>
+                            <span class="line" data-width="0.9em"></span>
+                            <span class="char">취</span>
+                            <span class="char">향</span>
+                            <span class="char">과</span>
+                        </p>
+                        <p class="text2">
+                            <span class="char">개</span>
+                            <span class="char">성</span>
+                            <span class="char">을</span>
+                            <span class="line" data-width="2.6em"></span>
+                            <span class="char">존</span>
+                            <span class="char">중</span>
+                            <span class="char">하</span>
+                            <span class="char">는</span>
+                        </p>
+                        <p class="text3">                    
+                            <span class="char">E</span>
+                            <span class="char">Q</span>
+                            <span class="char">L</span>
+                            <span class="char">과</span>
+
+                        </p>
+                        <p class="text4">
+                            <span class="char">힙</span>
+                            <span class="char">한</span>&nbsp;
+                            <span class="char">콘</span>
+                            <span class="char">텐</span>
+                            <span class="char">츠</span>
+                            <span class="char">와</span>
+                        </p>
+                        <p class="text5">
+                            <span class="char">깊</span>
+                            <span class="char">이</span>
+                            <span class="char">있</span>
+                            <span class="char">는</span>
+                            <span class="line" data-width="1.8em"></span>
+                            <span class="char">도</span>
+                            <span class="char">서</span>
+                            <span class="char">들</span>
+                            <span class="char">로</span>
+                        </p>
+                        <p class="text6">
+                            <span class="char">대</span>
+                            <span class="char">표</span>
+                            <span class="char">되</span>
+                            <span class="char">는</span>
+                        </p>
+                        <p class="text7">
+                            <span class="char">민</span>
+                            <span class="char">음</span>
+                            <span class="char">사</span>
+                            <span class="line" data-width="2.3em"></span>
+                            <span class="char">와</span>
+                            <span class="char">의</span>
+                        </p>
+                        <p class="text8">
+                            <span class="char">두</span>
+                            <span class="char">번</span>
+                            <span class="char">째</span>&nbsp;
+                            <span class="char">만</span>
+                            <span class="char">남</span>
+                        </p>
+                    </div>
+                </div>
+                <p class="name">EQL Studio x 민음사</p>
+            </section>
+
+            <section class="sc-brand">
+                <div class="group-brand container">
+                    <h2 class="title">Our brands</h2>
+                    <p class="text">
+                        다양한 취향과 개성을 지닌 우리들의 고유한 패션, 라이프스타일, 그리고 컬쳐를 EQL이 엄선한 브랜드들을 통해 만나보세요.
+                    </p>
+                    <ul class="brand-list">
+                        <li class="brand-item">
+                            <img src="./assets/images/mschf.svg" alt="mschf">
+                        </li>
+                        <li class="brand-item">
+                            <img src="./assets/images/sculptor.png" alt="sculptor">
+                        </li>
+                        <li class="brand-item">
+                            <img src="./assets/images/clarks.svg" alt="clarks">
+                        </li>
+                        <li class="brand-item">
+                            <img src="./assets/images/lordjohngrey.png" alt="lord john grey">
+                        </li>
+                        <li class="brand-item">
+                            <img src="./assets/images/vunque.png" alt="vunque">
+                        </li>
+                        <li class="brand-item">
+                            <img src="./assets/images/openyy.svg" alt="open yy">
+                        </li>
+                        <li class="brand-item">
+                            <img src="./assets/images/covernat.svg" alt="covernat">
+                        </li>
+                        <li class="brand-item">
+                            <img src="./assets/images/sinkingdeeper.png" alt="sinkingdeeper">
+                        </li>
+                        <li class="brand-item">
+                            <img src="./assets/images/swallowlounge.svg" alt="swallowlounge">
+                        </li>
+                        <li class="brand-item">
+                            <img src="./assets/images/sony.svg" alt="sony">
+                        </li>
+                        <li class="brand-item">
+                            <img src="./assets/images/kinchi.png" alt="kinchi">
+                        </li>
+                        <li class="brand-item">
+                            <img src="./assets/images/reqins.svg" alt="reqins">
+                        </li>
+                        <li class="brand-item">
+                            <img src="./assets/images/glowny.svg" alt="glowny">
+                        </li>
+                        <li class="brand-item">
+                            <img src="./assets/images/themuseumvisitor.png" alt="themuseumvisitor">
+                        </li>
+                        <li class="brand-item">
+                            <img src="./assets/images/smeg.svg" alt="smeg">
+                        </li>
+                        <li class="brand-item">
+                            <img src="./assets/images/magis.svg" alt="magis">
+                        </li>
+                        <li class="brand-item">
+                            <img src="./assets/images/out.webp" alt="out">
+                        </li>
+                        <li class="brand-item">
+                            <img src="./assets/images/insilence.png" alt="insilence">
+                        </li>
+                        <li class="brand-item">
+                            <img src="./assets/images/amomento.svg" alt="amomento">
+                        </li>
+                        <li class="brand-item">
+                            <img src="./assets/images/rest&recreation.png" alt="rest recreation">
+                        </li>
+                        <li class="brand-item">
+                            <img src="./assets/images/saltypebble.png" alt="salty pebble">
+                        </li>
+                        <li class="brand-item">
+                            <img src="./assets/images/anderssonbell.svg" alt="andersson bell">
+                        </li>
+                        <li class="brand-item">
+                            <img src="./assets/images/coldframe.png" alt="coldframe">
+                        </li>
+                        <li class="brand-item">
+                            <img src="./assets/images/asics.png" alt="asics">
+                        </li>
+                        <li class="brand-item">
+                            <img src="./assets/images/arcteryx.svg" alt="arcteryx">
+                        </li>
+                        <li class="brand-item">
+                            <img src="./assets/images/ecru.svg" alt="ecru">
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="sc-openyy">
+                <h2 class="blind">EQL x TheOpen Product</h2>
+                <div class="video">
+                    <video src="./assets/videos/sc-openyy.mp4" loop muted autoplay></video>
+                </div>
+                <div class="group-text container">
+                    <p class="title">
+                        <span>금방이라도 끊어질 듯</span>
+                        <span>팽팽하게 느껴지는 긴장감 속,</span>
+                        <span>그렇게 우아한 백조들의</span>
+                        <span>싸움이 시작된다.</span>
+                    </p>
+                </div>
+                <svg class="shape-move" fill="currentColor" preserveAspectRatio="none" style="">
+                    <rect x="0" y="0" width="75" height="504.5" class="shape-rect"></rect>
+                    <rect x="75" y="504.5" width="6" height="504.5" class="shape-rect"></rect>
+                    <rect x="81" y="0" width="48" height="504.5" class="shape-rect"></rect>
+                    <rect x="129" y="504.5" width="66" height="504.5" class="shape-rect"></rect>
+                    <rect x="195" y="0" width="28" height="504.5" class="shape-rect"></rect>
+                    <rect x="223" y="504.5" width="31" height="504.5" class="shape-rect"></rect>
+                    <rect x="254" y="0" width="42" height="504.5" class="shape-rect"></rect>
+                    <rect x="296" y="504.5" width="24" height="504.5" class="shape-rect"></rect>
+                    <rect x="320" y="0" width="23" height="504.5" class="shape-rect"></rect>
+                    <rect x="343" y="504.5" width="103" height="504.5" class="shape-rect"></rect>
+                    <rect x="446" y="0" width="100" height="504.5" class="shape-rect"></rect>
+                    <rect x="546" y="504.5" width="54" height="504.5" class="shape-rect"></rect>
+                    <rect x="600" y="0" width="17" height="504.5" class="shape-rect"></rect>
+                    <rect x="617" y="504.5" width="58" height="504.5" class="shape-rect"></rect>
+                    <rect x="675" y="0" width="52" height="504.5" class="shape-rect"></rect>
+                    <rect x="727" y="504.5" width="23" height="504.5" class="shape-rect"></rect>
+                    <rect x="750" y="0" width="23" height="504.5" class="shape-rect"></rect>
+                    <rect x="773" y="504.5" width="88" height="504.5" class="shape-rect"></rect>
+                    <rect x="861" y="0" width="33" height="504.5" class="shape-rect"></rect>
+                    <rect x="894" y="504.5" width="59" height="504.5" class="shape-rect"></rect>
+                    <rect x="953" y="0" width="89" height="504.5" class="shape-rect"></rect>
+                    <rect x="1042" y="504.5" width="26" height="504.5" class="shape-rect"></rect>
+                    <rect x="1068" y="0" width="38" height="504.5" class="shape-rect"></rect>
+                    <rect x="1106" y="504.5" width="89" height="504.5" class="shape-rect"></rect>
+                    <rect x="1195" y="0" width="66" height="504.5" class="shape-rect"></rect>
+                    <rect x="1261" y="504.5" width="25" height="504.5" class="shape-rect"></rect>
+                    <rect x="1286" y="0" width="18" height="504.5" class="shape-rect"></rect>
+                    <rect x="1304" y="504.5" width="13" height="504.5" class="shape-rect"></rect>
+                    <rect x="1317" y="0" width="108" height="504.5" class="shape-rect"></rect>
+                    <rect x="1425" y="504.5" width="36" height="504.5" class="shape-rect"></rect>
+                    <rect x="1461" y="0" width="96" height="504.5" class="shape-rect"></rect>
+                    <rect x="1557" y="504.5" width="48" height="504.5" class="shape-rect"></rect>
+                    <rect x="1605" y="0" width="37" height="504.5" class="shape-rect"></rect>
+                    <rect x="1642" y="504.5" width="26" height="504.5" class="shape-rect"></rect>
+                    <rect x="1668" y="0" width="102" height="504.5" class="shape-rect"></rect> 
+                    <rect x="1770" y="504.5" width="102" height="504.5" class="shape-rect"></rect>
+                    <rect x="1872" y="0" width="36" height="504.5" class="shape-rect"></rect>
+                    <rect x="1908" y="504.5" width="32" height="504.5" class="shape-rect"></rect>
+                    <rect x="1940" y="0" width="7" height="504.5" class="shape-rect"></rect>
+                    <rect x="1947" y="504.5" width="39" height="504.5" class="shape-rect"></rect>
+                    <rect x="1986" y="0" width="32" height="504.5" class="shape-rect"></rect>
+                    <rect x="2018" y="504.5" width="8" height="504.5" class="shape-rect"></rect>
+                    <rect x="2026" y="0" width="9" height="504.5" class="shape-rect"></rect>
+                    <rect x="2035" y="504.5" width="112" height="504.5" class="shape-rect"></rect>
+                    <rect x="2147" y="0" width="47" height="504.5" class="shape-rect"></rect>
+                    <rect x="2194" y="504.5" width="4" height="504.5" class="shape-rect"></rect>
+                    <rect x="2198" y="0" width="39" height="504.5" class="shape-rect"></rect>
+                    <rect x="2237" y="504.5" width="4" height="504.5" class="shape-rect"></rect>
+                </svg>
+                <div class="text-wrap">
+                    <p class="text">EQL x TheOpen Product</p>
+                    <p class="text">
+                        <svg width="16" height="14" viewBox="0 0 16 14" fill="none" xmlns="http://www.w3.org/2000/svg" class="warning"><path d="M8.72 8.72V5.6a.79.79 0 0 0-.8-.78.79.79 0 0 0-.79.78v3.13c0 .43.36.78.8.78a.8.8 0 0 0 .8-.78Zm-.79 2.91a.78.78 0 0 0 .8-.79c0-.22-.08-.4-.24-.55a.77.77 0 0 0-.56-.23.78.78 0 0 0-.8.78.77.77 0 0 0 .8.78Z" fill="currentColor"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M6.98.58a1.19 1.19 0 0 1 2.04 0l6.82 11.67c.45.78-.11 1.75-1.02 1.75H1.18c-.9 0-1.47-.97-1.02-1.75L6.98.58ZM1.46 12.67 8 1.47l6.54 11.2H1.46Z" fill="currentColor"></path></svg>
+                        Flash warning on mouse move
+                    </p>
+                </div>
+            </section>
+            <section class="sc-shop">
+                <div class="group-shop container">
+                    <h2 class="title">
+                        <span>Essential</span>
+                        <span>by EQL</span>
+                    </h2>
+                    <p class="text">ESSENTIAL by EQL은 EQL의 프리미엄 에센셜 브랜드 입니다. 미니멀의 기본이 되는 블랙 컬러를 메인으로 유행에 구애 받지 않고 오랜 시간 동안 착용 할 수 있는 에센셜한 아이템을 제안합니다.</p>
+                    <button class="btn-more">
+                        <span>BROWSE MORE</span>
+                        <i class="ic-left"></i>
+                        <i class="ic-right"></i>
+                    </button>
+
+                    <ul class="shop-list">
+                        <li>
+                            <a href="">
+                                <div class="img-wrap">
+                                    <img src="./assets/images/sc-essential1.jpg" alt="Double Breasted Coat">
+                                </div>
+                                <div class="text-wrap">
+                                    <strong class="name">Double Breasted Coat</strong>
+                                    <p class="text">
+                                        - 오버사이즈 더블 코트<br>
+                                        - 울 캐시 혼방의 트윌 소재<br>
+                                        - 부드러운 퀄리티의 어깨 패드로 체형 보완
+                                    </p>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <div class="img-wrap">
+                                    <img src="./assets/images/sc-essential2.jpg" alt="Duck Down Jumper">
+                                </div>
+                                <div class="text-wrap">
+                                    <strong class="name">Duck Down Jumper</strong>
+                                    <p class="text">
+                                        - DUCK DOWN 90 : 10<br>
+                                        - 벌룬 한 실루엣과 살짝 쇼트한 기장감 돋보이는 다운점퍼<br>
+                                        - 광택감 없는 소재로 미니멀한 무드의 다운점퍼
+                                    </p>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <div class="img-wrap">
+                                    <img src="./assets/images/sc-essential3.jpg" alt="Heavy Weight Knit Pants">
+                                    <div class="invert"></div>
+                                </div>
+                                <div class="text-wrap">
+                                    <strong class="name">Heavy Weight Knit Pants</strong>
+                                    <p class="text">
+                                        - 램스울 함량이 높아 보온성이 뛰어난 울/코튼 혼방 원사를 사용<br>
+                                        - 밀라노 조직 짜임으로 고급스러운 표면 조직감<br>
+                                        - 밑단까지 루즈하게 떨어지는 세미 와이드 실루엣
+                                    </p>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="minumsa-area">
+                        <h3 class="title">EQL Studio x 민음사</h3>
+                        <p class="text">
+                            민음사 북클럽의 대표 캐릭터인 '북희'는 책을 주식으로 하는 애벌레로 매일 책을 열심히 읽고 아름다운 나비가 되려는 친구입니다. 자신만의 까다로운 취향을 가진 아름다운 나비가 되길 바라며 EQL STUDIO와 민음사가 제안하는 상품들을 지금 만나보세요.
+                        <ul class="minumsa-list">
+                            <li>
+                                <a href="">
+                                    <div class="img-wrap"><img src="./assets/images/sc-shop.jpg" alt="Reading Everyday Tee"></div>
+                                    <strong class="name">Reading Everyday Tee</strong>
+                                    <p class="text">Black / 52,000 won</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <div class="img-wrap"><img src="./assets/images/sc-shop2.jpeg" alt="BOOKIE Glass"></div>
+                                    <strong class="name">BOOKIE Glass</strong>
+                                    <p class="text">Blue / 15,000 won</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <div class="img-wrap"><img src="./assets/images/sc-shop3.jpeg" alt="Reading Everyday Bag"></div>
+                                    <strong class="name">Reading Everyday Bag</strong>
+                                    <p class="text">Ivory / 20,000 won</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <div class="img-wrap"><img src="./assets/images/sc-shop4.jpeg" alt="Reading Everyday Socks"></div>
+                                    <strong class="name">Reading Everyday Socks</strong>
+                                    <p class="text">Black / 8,900 won</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <p class="text">More items</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="group-top">
+                    <p class="text fade">
+                        패션은 우리의 다양성과 평등의 가치를 공유하고 이해하는 특별한 수단입니다. EQL은 패션을 통해 서로의 차이를 존중하며, 각자의 독특한 스타일을 표현하고 나누는 공간으로서 여러분들과 함께 성장하고자 합니다.
+                    </p>
+                    <button class="btn-reach">
+                        <span>REACH OUT</span>
+                        <i class="ic-left"></i>
+                        <i class="ic-right"></i>
+                    </button>
+                </div>
+                <div class="group-text fade">
+                    <div class="text-wrap">
+                        <p class="name">EQL</p>
+                        <p class="text">We are all EQL.</p>
+                    </div>
+                    <div class="sns-wrap">
+                        <p class="name">FOLLOW</p>
+                        <ul class="sns-list">
+                            <li> <a href=""> <span class="blind">Instagram</span> <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M11.218 6.73c.65.13 1.24.44 1.71.91l-.01-.01c.47.46.79 1.05.92 1.7.13.65.06 1.32-.19 1.93-.25.61-.67 1.13-1.22 1.5-.55.37-1.19.57-1.85.57-.44 0-.88-.08-1.28-.25-.4-.17-.77-.41-1.08-.72a3.4 3.4 0 0 1-.72-1.08c-.17-.41-.26-.84-.26-1.28 0-.66.2-1.3.56-1.85.36-.55.88-.98 1.49-1.23s1.28-.32 1.93-.19Z" fill="#fff"></path> <path fill-rule="evenodd" clip-rule="evenodd" d="M20.512 5.954c.047.988.066 1.387.066 4.026h-.01c.006 1.626.004 2.4-.008 2.989-.009.392-.022.703-.042 1.131-.034.71-.115 1.266-.24 1.746a5.948 5.948 0 0 1-.22.684c-.25.66-.59 1.21-1.15 1.77-.56.56-1.11.9-1.77 1.16-.63.25-1.36.42-2.42.47l-.085.005c-.996.046-1.399.065-4.035.065-2.71.01-3.06 0-4.12-.05-1.07-.05-1.79-.21-2.43-.46-.66-.25-1.21-.6-1.77-1.15-.56-.56-.9-1.11-1.16-1.77-.25-.64-.42-1.37-.47-2.43l-.005-.094C.596 13.058.578 12.66.578 10.02c0-2.72 0-3.06.05-4.12.05-1.07.21-1.79.46-2.43.25-.66.6-1.21 1.15-1.77.56-.56 1.11-.9 1.77-1.16.64-.25 1.37-.42 2.43-.47.536-.026.888-.043 1.457-.054C8.45.005 9.214 0 10.558 0c2.72 0 3.06 0 4.12.05 1.07.05 1.79.21 2.43.46.66.25 1.21.6 1.77 1.15.266.267.483.531.665.806.2.303.358.618.495.964.25.64.42 1.37.47 2.43l.004.094ZM5.448 10.01c0 2.83 2.3 5.12 5.14 5.12s5.13-2.3 5.13-5.14c-.01-2.83-2.32-5.12-5.15-5.12-2.83 0-5.12 2.3-5.12 5.14Zm11.31-4.51c.17-.17.28-.39.33-.62h.01c.05-.23.02-.47-.07-.69-.09-.22-.24-.41-.44-.54-.2-.13-.43-.2-.67-.2-.32 0-.63.12-.85.35-.22.23-.35.53-.35.85 0 .24.07.47.2.67a1.234 1.234 0 0 0 .94.533c.096.005.194-.002.29-.023a1.242 1.242 0 0 0 .61-.33Z" fill="#fff"></path> </svg> </a> </li>
+                            <li> <a href=""> <span class="blind">Twitter</span> <svg width="26" height="20" viewBox="0 0 26 20" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M22.628 4.979c.015.217.015.434.015.653 0 6.673-5.07 14.368-14.34 14.368v-.004a14.247 14.247 0 0 1-7.725-2.264 10.108 10.108 0 0 0 7.46-2.093 5.048 5.048 0 0 1-4.71-3.506 5.014 5.014 0 0 0 2.276-.087 5.048 5.048 0 0 1-4.043-4.95v-.064a5 5 0 0 0 2.287.632A5.062 5.062 0 0 1 2.288.92a14.295 14.295 0 0 0 10.387 5.276 5.06 5.06 0 0 1 1.458-4.825 5.039 5.039 0 0 1 7.131.22 10.1 10.1 0 0 0 3.2-1.227 5.067 5.067 0 0 1-2.215 2.793 10.007 10.007 0 0 0 2.894-.795 10.25 10.25 0 0 1-2.515 2.616Z" fill="#fff"></path> </svg> </a> </li>
+                            <li> <a href=""> <span class="blind">TikTok</span> <svg width="18" height="20" viewBox="0 0 18 20" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M13.966 3.133A4.753 4.753 0 0 1 12.788 0H9.355v13.778a2.88 2.88 0 0 1-2.878 2.778 2.897 2.897 0 0 1-2.889-2.89c0-1.91 1.844-3.344 3.744-2.755V7.4C3.5 6.889.144 9.867.144 13.667.144 17.367 3.21 20 6.466 20a6.328 6.328 0 0 0 6.322-6.333v-6.99a8.167 8.167 0 0 0 4.778 1.534V4.778s-2.09.1-3.6-1.645Z" fill="#fff"></path> </svg> </a> </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="group-bottom">
+                    <div class="group-logo">        
+                        <svg width="658" height="272" viewBox="0 0 658 272" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g>
+                                <g class="letter">
+                                    <path d="M192.1 252H2.75V7H189.3V59.15H62.95V101.5H184.75V153.65H62.95V199.85H192.1V252Z"/>
+                                </g>
+                                <g class="letter">
+                                    <path d="M458.5 129.5C458.5 161.933 448.817 189.933 429.45 213.5L451.15 236.25L418.6 268.45L394.1 242.2C376.367 252 356.417 256.9 334.25 256.9C298.083 256.9 268.333 244.65 245 220.15C221.667 195.417 210 165.2 210 129.5C210 93.5666 221.667 63.4667 245 39.2C268.333 14.4666 298.083 2.09998 334.25 2.09998C370.417 2.09998 400.167 14.4666 423.5 39.2C446.833 63.4667 458.5 93.5666 458.5 129.5ZM334.25 204.4C341.717 204.4 348.833 203.233 355.6 200.9L329.35 172.55L360.85 142.1L388.5 170.8C395.033 158.667 398.3 144.9 398.3 129.5C398.3 109.667 392.583 92.2833 381.15 77.35C369.95 62.1833 354.317 54.6 334.25 54.6C314.417 54.6 298.667 62.1833 287 77.35C275.8 92.5166 270.2 109.9 270.2 129.5C270.2 149.567 275.8 167.067 287 182C298.433 196.933 314.183 204.4 334.25 204.4Z"/>
+                                </g>
+                                <g class="letter">
+                                    <path d="M655.4 252H480.75V7H540.95V199.5H655.4V252Z"/>
+                                </g>
+                            </g>
+                        </svg>
+                    </div>
+                    <div class="group-copy">
+                        <small class="copy">© HANDSOME — circa 1987</small>
+                        <small class="copy"><a href="">LEGALS</a></small>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
